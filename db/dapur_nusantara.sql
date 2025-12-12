@@ -142,7 +142,7 @@ CREATE TABLE `reservations` (
 --
 
 INSERT INTO `reservations` (`id`, `user_id`, `meja_id`, `nama_pemesan`, `notelp`, `tanggal`, `jam_mulai`, `jam_selesai`, `status`, `bukti_pembayaran`, `created_at`) VALUES
-(15, 7, 6, 'Faris Putra Suryadinata', '2314153531', '2025-11-24', '14:00:00', '15:30:00', 'cancelled', '1763873314_gulaibelacan.jpeg', '2025-11-23 04:48:16'),
+(15, 7, 6, 'Faris Putra Suryadinata', '2314153531', '2025-11-24', '14:00:00', '15:30:00', 'cancelled', NULL, '2025-11-23 04:48:16'),
 (16, 7, 5, 'fakhri dwi', '08561827183', '2025-11-26', '13:00:00', '14:30:00', 'cancelled', NULL, '2025-11-25 11:31:45'),
 (17, 3, 4, 'Faris Putra Suryadinata', '089188672', '2025-11-26', '13:00:00', '14:30:00', 'cancelled', NULL, '2025-11-25 11:32:44'),
 (18, 3, 7, 'Faris Putra Suryadinata', '08142641412', '2025-11-26', '13:00:00', '14:30:00', 'cancelled', NULL, '2025-11-25 11:38:31'),
@@ -150,7 +150,7 @@ INSERT INTO `reservations` (`id`, `user_id`, `meja_id`, `nama_pemesan`, `notelp`
 (20, 3, 4, 'Faris Putra Suryadinata', '08142641412', '2025-11-26', '13:00:00', '14:30:00', 'cancelled', NULL, '2025-11-25 11:46:28'),
 (21, 7, 8, 'Fakhir dwi', '08142641412', '2025-11-26', '13:00:00', '14:30:00', 'cancelled', NULL, '2025-11-25 11:55:04'),
 (22, 7, 3, 'Fakhir dwi', '08142641412', '2025-11-26', '13:00:00', '14:30:00', 'cancelled', NULL, '2025-11-25 12:07:52'),
-(23, 7, 5, 'Fakhir dwi', '08142641412', '2025-11-26', '13:00:00', '14:30:00', 'request_cancel', '1764075009_satebandeng.jpg', '2025-11-25 12:50:00');
+(23, 7, 5, 'Fakhir dwi', '08142641412', '2025-11-26', '13:00:00', '14:30:00', 'cancelled', NULL, '2025-11-25 12:50:00');
 
 -- --------------------------------------------------------
 
