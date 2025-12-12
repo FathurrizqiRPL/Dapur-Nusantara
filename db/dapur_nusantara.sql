@@ -201,7 +201,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `nama`, `email`, `password`, `role`, `created_at`) VALUES
-(1, 'Administrator', 'admin@nusantara.com', '$2y$10$8r3WxF8DxF7Ul1PO2uVmxe7Dc65/7XxX9U.JgMihwQnufjJReyW6C', 'admin', '2025-09-21 12:07:11'),
+(1, 'Admin Dapur', 'admin@gmail.com', '$2y$10$E4PtS.AtAwPeJ4UmQ3G2xOi4rPMRvRLP7CSDUOJg8myoEbyWqYyPe', 'admin', '2025-09-21 12:07:11'),
 (3, 'Faris Putra Suryadinata', 'Faris12345@gmail.com', '$2y$10$DId61JyfuseGg2hSF62OiOGSIpVqUM/lbe4be7sC2j.XrH2RoyW1y', 'user', '2025-10-01 07:01:33'),
 (4, 'Fathurrizqi Hidayat', 'Fathur12345@gmail.com', '$2y$10$h6jybpoCi/NVgZdypMNDluzQnqJZfw9fBKoGQxK9Kwho2Kt/eLb4e', 'admin', '2025-10-15 07:23:00'),
 (5, 'Ujang', 'ujang1234@gmail.com', '$2y$10$l/.40mMOt4B/VBcO1vd/JOSb0zkvyxZl0BuqvuzhzqL/uDI5xT.pa', 'user', '2025-11-12 01:46:34'),
