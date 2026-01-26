@@ -69,6 +69,7 @@ $reservasi = mysqli_query($conn, "SELECT r.*, t.kapasitas
         <th>Meja</th>
         <th>Tanggal</th>
         <th>Jam</th>
+        <th>Total Harga</th>
         <th>Status</th>
         <th>Aksi</th>
       </tr>
@@ -88,9 +89,14 @@ $reservasi = mysqli_query($conn, "SELECT r.*, t.kapasitas
         <tr>
           <td><?= htmlspecialchars($row['nama_pemesan']) ?></td>
           <td><?= htmlspecialchars($row['notelp']) ?></td>
-          <td>Meja <?= $row['meja_id'] ?> (<?= $row['kapasitas'] ?> orang)</td>
+          <td>
+            <div class="meja-info">
+              <span>Meja <?= $row['meja_id'] ?> (<?= $row['kapasitas'] ?> orang)</span>
+            </div>
+          </td>
           <td><?= htmlspecialchars($row['tanggal']) ?></td>
           <td><?= substr($row['jam_mulai'],0,5) ?> - <?= substr($row['jam_selesai'],0,5) ?></td>
+          <td><span class="harga-badge">Rp <?= isset($row['harga_total']) && $row['harga_total'] ? number_format($row['harga_total'], 0, ',', '.') : '0' ?></span></td>
           <td>
             <?php if ($row['status'] == 'pending'): ?>
               <span class="badge pending">Pending</span>
@@ -105,6 +111,8 @@ $reservasi = mysqli_query($conn, "SELECT r.*, t.kapasitas
                <span class="badge pending">Waiting admin</span>
              <?php elseif ($row['status'] == 'request_cancel'):?>
                <span class="badge pending">Request Cancel</span>
+            <?php elseif ($row['status'] == 'refunded'):?>
+               <span class="badge refunded">Refunded</span>
             <?php else:?>
               <span class="badge rejected">Cancelled</span>
             <?php endif; ?>

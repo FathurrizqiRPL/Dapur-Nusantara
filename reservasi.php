@@ -46,9 +46,15 @@ if (isset($_POST['reservasi'])) {
             if (mysqli_num_rows($cek) > 0) {
                 $error = "Meja ini sudah dipesan pada jam tersebut. Silakan pilih meja atau jam lain.";
             } else {
+                // Ambil kapasitas meja untuk hitung harga
+                $get_meja = mysqli_query($conn, "SELECT kapasitas FROM tables WHERE id='$meja_id'");
+                $meja_data = mysqli_fetch_assoc($get_meja);
+                $harga_per_orang = 10000; // Rp 10.000 per orang
+                $harga_total = $meja_data['kapasitas'] * $harga_per_orang;
+                
                 $insert = mysqli_query($conn, "INSERT INTO reservations 
-                    (user_id, meja_id, nama_pemesan, notelp, tanggal, jam_mulai, jam_selesai, status) 
-                    VALUES ('$user_id', '$meja_id', '$nama_pemesan' ,'$notelp', '$tanggal', '$jam_mulai', '$jam_selesai', 'pending')");
+                    (user_id, meja_id, nama_pemesan, notelp, tanggal, jam_mulai, jam_selesai, status, harga_total) 
+                    VALUES ('$user_id', '$meja_id', '$nama_pemesan' ,'$notelp', '$tanggal', '$jam_mulai', '$jam_selesai', 'pending', '$harga_total')");
 
                 if ($insert) {
                     $success = "Reservasi berhasil dibuat! Silakan konfirmasi pembayaran untuk melanjutkan.";

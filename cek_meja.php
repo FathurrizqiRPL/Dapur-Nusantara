@@ -12,7 +12,7 @@ $query = mysqli_query($conn, "SELECT meja_id FROM reservations
         (jam_mulai <= '$jam_mulai' AND jam_selesai > '$jam_mulai') OR
         (jam_mulai < '$jam_selesai' AND jam_selesai >= '$jam_selesai')
     )
-    AND status != 'cancelled'");
+    AND status != 'cancelled' AND status != 'refunded'");
 
 $disable = [];
 

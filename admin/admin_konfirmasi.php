@@ -43,8 +43,8 @@ elseif ($aksi === 'reject') {
 }
 
 elseif ($aksi === 'accept_cancel') {
-    // Admin menerima permintaan cancel: set reservation -> cancelled, tandai request processed
-    $ok1 = mysqli_query($conn, "UPDATE reservations SET status = 'cancelled' WHERE id = $id");
+    // Admin menerima permintaan cancel: set reservation -> Refunded, tandai request processed, dan free up time slot
+    $ok1 = mysqli_query($conn, "UPDATE reservations SET status = 'refunded' WHERE id = $id");
     $ok2 = mysqli_query($conn, "
         UPDATE request_cancellations
         SET status = 'processed',

@@ -844,6 +844,25 @@ body.has-sidebar {
   text-align: center;
   white-space: normal;
 }
+
+/* Styling untuk harga di dalam meja */
+.meja-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.meja-detail {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.harga-display {
+  font-weight: 700;
+  color: #f4b400;
+  font-size: 0.95rem;
+}
+
 .btn-konfirmasi{
   display:inline-block;
   background: black;
@@ -873,6 +892,7 @@ body.has-sidebar {
 .riwayat .badge.pending { background: #ff9800; }
 .riwayat .badge.confirmed { background: #4caf50; }
 .riwayat .badge.rejected { background: #f44336; }
+.riwayat .badge.refunded { background: #e74c3c; }
 
 /* Lihat bukti button dalam riwayat */
 .riwayat a.btn-view {
@@ -924,6 +944,23 @@ body.has-sidebar .admin-container {
   border-bottom: 1px solid #e6e6e6;
 }
 
+/* Styling untuk harga info di tabel */
+.meja-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+}
+
+.harga-badge {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #fff;
+  background: #f4b400;
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin-top: 4px;
+}
 
 .admin-table .btn-approve,
 .admin-table .btn-reject {
@@ -968,6 +1005,7 @@ body.has-sidebar .admin-container {
 .admin-table .badge.rejected { background: #f44336; }
 .admin-table .badge.waiting { background: #ff9800; }
 .admin-table .badge.request_cancel { background: #ff9800; }
+.admin-table .badge.refunded { background: #e74c3c; }
 
 
 .admin-table a.btn-view {

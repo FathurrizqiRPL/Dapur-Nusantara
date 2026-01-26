@@ -40,8 +40,9 @@ ORDER BY r.tanggal DESC, r.jam_mulai DESC
         <th>Meja</th>
         <th>Tanggal</th>
         <th>Jam</th>
+        <th>Total Harga</th>
         <th>Status</th>
-        <th>Rekening Refund</th> <!-- new column -->
+        <th>Rekening Refund</th>
         <th>Bukti</th>
         <th>Aksi</th>
       </tr>
@@ -54,9 +55,14 @@ ORDER BY r.tanggal DESC, r.jam_mulai DESC
         ?>
         <tr>
           <td><?= htmlspecialchars($row['nama_pemesan'] ?? $row['nama']) ?></td>
-          <td>Meja <?= htmlspecialchars($row['meja_id']) ?> (<?= htmlspecialchars($row['kapasitas']) ?> orang)</td>
+          <td>
+            <div class="meja-info">
+              <span>Meja <?= htmlspecialchars($row['meja_id']) ?> (<?= htmlspecialchars($row['kapasitas']) ?> orang)</span>
+            </div>
+          </td>
           <td><?= htmlspecialchars($row['tanggal']) ?></td>
           <td><?= substr($row['jam_mulai'],0,5) ?> - <?= substr($row['jam_selesai'],0,5) ?></td>
+          <td><span class="harga-badge">Rp <?= isset($row['harga_total']) && $row['harga_total'] ? number_format($row['harga_total'], 0, ',', '.') : '0' ?></span></td>
           <td>
             <?php
               // tampilkan status dengan badge styling
@@ -67,6 +73,8 @@ ORDER BY r.tanggal DESC, r.jam_mulai DESC
                 $badge_class = 'rejected';
               } elseif ($status === 'request_cancel') {
                 $badge_class = 'request_cancel';
+              } elseif ($status === 'refunded') {
+                $badge_class = 'refunded';
               }
             ?>
             <span class="badge <?= $badge_class ?>">
