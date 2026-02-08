@@ -68,8 +68,7 @@ ORDER BY r.tanggal DESC, r.jam_mulai DESC
     <table class="admin-table">
       <thead>
         <tr>
-          <th colspan="4"></th>
-
+          <th colspan="5"></th>
 
           <th colspan="2" class="laporan-keuangan-header">
             <div class="laporan-keuangan">
@@ -83,7 +82,7 @@ ORDER BY r.tanggal DESC, r.jam_mulai DESC
             </div>
           </th>
 
-          <th></th>
+          <th colspan="3"></th>
         </tr>
 
         <tr>
