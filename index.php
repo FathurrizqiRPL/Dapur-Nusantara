@@ -3,6 +3,14 @@ session_start();
 include "config.php";
 include "navbar.php";
 
+if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
+    header("Location: admin/admin_dashboard.php");
+    exit;
+    }
+
+
+
+
 // ambil sampai 4 item menu andalan terbaru
 $menuAndalanSql = "SELECT * FROM menuandalan ORDER BY menu_id DESC LIMIT 4";
 $menuAndalan = mysqli_query($conn, $menuAndalanSql);

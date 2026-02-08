@@ -952,15 +952,18 @@ body.has-sidebar .admin-container {
   align-items: center;
 }
 
-.harga-badge {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: #fff;
+  .harga-badge {
+  display: inline-block;
   background: #f4b400;
-  padding: 4px 10px;
-  border-radius: 4px;
-  margin-top: 4px;
+  color: #fff;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  white-space: nowrap;
 }
+
+
 
 .admin-table .btn-approve,
 .admin-table .btn-reject {
@@ -1701,4 +1704,36 @@ input[type="submit"]:disabled,
 
 .btn-konfirmasi:hover {
     transform: scale(1.15) !important;
+}
+
+
+
+.laporan-keuangan-header {
+    background: #fff;
+    text-align: center;
+    vertical-align: top;
+}
+
+.laporan-keuangan {
+     width: 260px;
+    margin-right: 30%;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.laporan-keuangan h4 {
+    margin: 0 0 6px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.laporan-keuangan a {
+    font-size: 13px;
+    text-decoration: none;
+    color: #007bff;
+}
+
+.laporan-keuangan a:hover {
+    text-decoration: underline;
 }
