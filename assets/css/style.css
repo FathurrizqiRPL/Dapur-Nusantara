@@ -3,13 +3,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
-
 
 body {
   background-color: #3a2e2e;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -27,22 +26,22 @@ a {
   color: #f4b400;
 } */
 
-.konfirmasi-pembayaran-body{
-  background-image:url(../img/woodbackground.jpg ) !important;
-  background-size:cover !important;
+.konfirmasi-pembayaran-body {
+  background-image: url(../img/woodbackground.jpg) !important;
+  background-size: cover !important;
 }
 
 /* ========== NAVBAR ========== */
 /* replaced .navbar_admin to be a vertical left sidebar */
-.navbar_admin{
+.navbar_admin {
   position: fixed;
   top: 0;
   left: 0;
-  width: 240px;              /* lebar sidebar */
-  height: 100vh;             /* memanjang ke bawah */         
+  width: 240px; /* lebar sidebar */
+  height: 100vh; /* memanjang ke bawah */
   background: #f5f5f5;
   padding: 20px 12px;
-  box-shadow: 2px 0 8px rgba(0,0,0,0.08);
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.08);
   z-index: 1000;
   display: flex;
   flex-direction: column;
@@ -75,14 +74,16 @@ a {
   color: #000;
   font-weight: 600;
   background: transparent;
-  transition: background .15s ease, transform .12s ease;
+  transition:
+    background 0.15s ease,
+    transform 0.12s ease;
   text-align: left;
 }
 
 /* tombol jelas terlihat (semi-opaque) */
 .navbar_admin a.btn-like,
 .navbar_admin a:hover {
-  background: rgba(0,0,0,0.06);
+  background: rgba(0, 0, 0, 0.06);
   transform: translateY(0);
 }
 
@@ -90,7 +91,7 @@ a {
 .navbar_admin a.primary {
   background: #3a2e2e;
   color: #fff;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
 /* sesuaikan body / konten jika ingin memberi ruang untuk sidebar:
@@ -109,7 +110,7 @@ body.has-sidebar {
     align-items: center;
     gap: 10px;
     padding: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   }
   .navbar_admin .nav-left,
   .navbar_admin .nav-right {
@@ -125,9 +126,9 @@ body.has-sidebar {
   position: fixed;
   top: 0;
   width: 100%;
-  background:#f5f5f5;
+  background: #f5f5f5;
   padding: 10px 0;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   z-index: 100;
 }
 
@@ -186,12 +187,12 @@ body.has-sidebar {
     justify-content: center;
     text-align: center;
   }
-  
+
   .nav-left,
   .nav-right {
     justify-content: center;
   }
-  
+
   .logo {
     margin-bottom: 5px;
   }
@@ -199,7 +200,7 @@ body.has-sidebar {
 
 .nav-right {
   display: flex;
-  align-items: center;   /* <-- ini yang bikin sejajar */
+  align-items: center; /* <-- ini yang bikin sejajar */
   gap: 20px;
 }
 
@@ -211,7 +212,7 @@ body.has-sidebar {
 
 /* ========== HERO SECTION ========== */
 .hero {
- background-image: url(../img/backgroundindex.jpg);
+  background-image: url(../img/backgroundindex.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -224,7 +225,7 @@ body.has-sidebar {
   min-height: 100vh;
   padding: 0 20px;
   position: relative;
-  max-height:638px;
+  max-height: 638px;
 }
 
 /*.hero::before {
@@ -243,15 +244,15 @@ body.has-sidebar {
   font-size: 2.8rem;
   margin-bottom: 15px;
   animation: fadeInDown 1s ease;
-  z-index:2;
+  z-index: 2;
 }
 
 .hero p {
-  position:relative;
+  position: relative;
   font-size: 1.2rem;
   margin-bottom: 20px;
   animation: fadeInUp 1.2s ease;
-  z-index:2;
+  z-index: 2;
 }
 
 .hero .btn {
@@ -270,13 +271,25 @@ body.has-sidebar {
 
 /* Animasi Hero */
 @keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-30px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ========== MENU SECTION ========== */
@@ -316,7 +329,7 @@ body.has-sidebar {
   gap: 60px;
   flex-wrap: wrap;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .menu-item {
@@ -368,12 +381,12 @@ body.has-sidebar {
     align-items: center;
     gap: 40px;
   }
-  
+
   .menu-item {
     width: 100%;
     max-width: 300px;
   }
-  
+
   .menu-item h3 {
     margin-bottom: 15px;
   }
@@ -395,8 +408,8 @@ body.has-sidebar {
   width: 90%;
   margin: 40px auto 80px;
   background-color: #ffffff;
-  padding-top:20px;
-  padding-bottom:20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .menu-andalan-items {
@@ -482,19 +495,19 @@ body.has-sidebar {
 
 /* Responsive untuk 3 item */
 @media (max-width: 900px) {
-  .menu-andalan-items { 
+  .menu-andalan-items {
     grid-template-columns: repeat(2, 1fr); /* 2 kolom di tablet */
     gap: 25px;
   }
 }
 
 @media (max-width: 600px) {
-  .menu-andalan-items { 
+  .menu-andalan-items {
     grid-template-columns: repeat(1, 1fr); /* 1 kolom di mobile */
     gap: 20px;
     max-width: 400px; /* Lebar maksimal lebih kecil di mobile */
   }
-  
+
   .menu-andalan-items .item .thumb {
     max-width: 100%; /* Gambar full width di mobile */
   }
@@ -513,7 +526,7 @@ body.has-sidebar {
   width: 85%;
   background: #ffffff;
   border-radius: 16px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
   display: flex;
   overflow: hidden;
 }
@@ -568,34 +581,30 @@ body.has-sidebar {
 }
 
 /* ========== AUTH (LOGIN & REGISTER) ========== */
-.register-body{
-    background-image:url(../img/woodbackground.jpg );
-    background-size:cover;
+.register-body {
+  background-image: url(../img/woodbackground.jpg);
+  background-size: cover;
 }
 
 .register-body img,
 .login-body img {
   width: 140px;
-  height: auto;              
+  height: auto;
   display: block;
-  margin: 40px auto 20px;   
-  object-fit: contain;       
+  margin: 40px auto 20px;
+  object-fit: contain;
   transition: transform 0.3s ease;
 }
 
 .register-body img:hover,
 .login-body img:hover {
-  transform: scale(1.08);    
+  transform: scale(1.08);
 }
 
-
-
-.login-body{
-  background-image:url(../img/woodbackground.jpg );
-  background-size:cover;
-  
+.login-body {
+  background-image: url(../img/woodbackground.jpg);
+  background-size: cover;
 }
-
 
 .auth-container {
   display: flex;
@@ -610,7 +619,7 @@ body.has-sidebar {
   max-width: 400px;
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   width: 350px;
   animation: fadeInUp 0.6s ease;
 }
@@ -639,12 +648,11 @@ body.has-sidebar {
 }
 
 .auth-form button:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
   text-shadow: none;
 }
 
 @media (max-width: 600px) {
-
   .login-body img,
   .register-body img {
     width: 120px;
@@ -669,7 +677,6 @@ body.has-sidebar {
 }
 
 @media (max-width: 400px) {
-
   .login-body img,
   .register-body img {
     width: 100px;
@@ -681,10 +688,10 @@ body.has-sidebar {
 }
 
 /* ========== SECTION RESERVASI ========== */
-.reservation-section{
+.reservation-section {
   background-image: url(../img/backgroundindex.jpg);
   background-repeat: no-repeat;
-  background-size:cover;
+  background-size: cover;
   background-position: center;
   color: #fff;
   text-align: center;
@@ -694,7 +701,7 @@ body.has-sidebar {
   align-items: center;
   padding: 0 20px;
   position: relative;
-  height:250px;
+  height: 250px;
   object-fit: cover;
 }
 
@@ -709,124 +716,119 @@ body.has-sidebar {
   z-index: 1;
 }
 
-.reservation-section h2,p,a {
-  z-index:3;
+.reservation-section h2,
+p,
+a {
+  z-index: 3;
 }
 
-.reservation-section a{
+.reservation-section a {
   background-color: black;
-  border-radius:8px;
+  border-radius: 8px;
   padding: 10px 20px;
   transition: transform 0.6s ease;
 }
 
-.reservation-section a:hover{
+.reservation-section a:hover {
   transform: scale(1.05);
 }
 
-
-
-
-
-
 /* ========== RESERVASI FORM========== */
-.page-container{
+.page-container {
   background-image: url(../img/woodbackground.jpg);
 }
 .page-container h2 {
-    text-align: center;
-    margin-top: 120px; 
-    margin-bottom: 10px;
-    color: white;
-    font-size: 1.8rem; 
+  text-align: center;
+  margin-top: 120px;
+  margin-bottom: 10px;
+  color: white;
+  font-size: 1.8rem;
 }
 
 .reservation-form {
-    max-width: 90%; 
-    width: 400px; 
-    margin: 20px auto; 
-    padding: 20px; 
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-width: 90%;
+  width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .reservation-form h2 {
-    text-align: center;
-    margin-bottom: 15px; 
-    font-size: 1.5rem; 
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
 }
 
 .reservation-form label {
-    display: block;
-    margin: 8px 0 5px; 
-    font-size: 0.9rem; 
+  display: block;
+  margin: 8px 0 5px;
+  font-size: 0.9rem;
 }
 
 .reservation-form input,
 .reservation-form select,
 .reservation-form button {
-    width: 100%;
-    padding: 10px; 
-    margin-bottom: 12px; 
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 0.9rem; 
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.9rem;
 }
 
 .reservation-form button {
-    background: black;
-    color: #fff;
-    font-weight: 600;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    padding: 12px; 
+  background: black;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  padding: 12px;
 }
 
 .reservation-form button:hover {
-    transform: scale(1.03); 
+  transform: scale(1.03);
 }
 
-
 @media (max-width: 480px) {
-    .page-container h2 {
-        margin-top: 100px;
-        font-size: 1.6rem;
-    }
-    
-    .reservation-form {
-        width: 95%;
-        padding: 15px;
-        margin: 15px auto;
-    }
-    
-    .reservation-form h2 {
-        font-size: 1.3rem;
-    }
-    
-    .reservation-form input,
-    .reservation-form select,
-    .reservation-form button {
-        padding: 8px;
-        margin-bottom: 10px;
-    }
+  .page-container h2 {
+    margin-top: 100px;
+    font-size: 1.6rem;
+  }
+
+  .reservation-form {
+    width: 95%;
+    padding: 15px;
+    margin: 15px auto;
+  }
+
+  .reservation-form h2 {
+    font-size: 1.3rem;
+  }
+
+  .reservation-form input,
+  .reservation-form select,
+  .reservation-form button {
+    padding: 8px;
+    margin-bottom: 10px;
+  }
 }
 
 /* ========== RIWAYAT ========== */
-.riwayat-body{
-  background-image:url(../img/woodbackground.jpg );
-  background-size:cover;
-  
+.riwayat-body {
+  background-image: url(../img/woodbackground.jpg);
+  background-size: cover;
 }
 
 .riwayat {
   max-width: 90%;
-  margin:130px auto;
+  margin: 130px auto;
   background: #fff;
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   overflow-x: auto;
 }
 
@@ -863,19 +865,19 @@ body.has-sidebar {
   font-size: 0.95rem;
 }
 
-.btn-konfirmasi{
-  display:inline-block;
+.btn-konfirmasi {
+  display: inline-block;
   background: black;
   color: #fff;
   padding: 6px 12px;
   border-radius: 6px;
   text-decoration: none;
   font-weight: bold;
-  transition:transform 0.9s ease;
+  transition: transform 0.9s ease;
 }
 
-.btn-konfirmasi:hover{
-  transform:scale(1.09);
+.btn-konfirmasi:hover {
+  transform: scale(1.09);
 }
 
 /* ========== RIWAYAT - BADGE & BUTTON STYLING ========== */
@@ -889,10 +891,18 @@ body.has-sidebar {
   text-align: center;
 }
 
-.riwayat .badge.pending { background: #ff9800; }
-.riwayat .badge.confirmed { background: #4caf50; }
-.riwayat .badge.rejected { background: #f44336; }
-.riwayat .badge.refunded { background: #e74c3c; }
+.riwayat .badge.pending {
+  background: #ff9800;
+}
+.riwayat .badge.confirmed {
+  background: #4caf50;
+}
+.riwayat .badge.rejected {
+  background: #f44336;
+}
+.riwayat .badge.refunded {
+  background: #e74c3c;
+}
 
 /* Lihat bukti button dalam riwayat */
 .riwayat a.btn-view {
@@ -904,7 +914,9 @@ body.has-sidebar {
   text-decoration: none;
   font-weight: 600;
   font-size: 0.85rem;
-  transition: background .15s ease, transform .08s ease;
+  transition:
+    background 0.15s ease,
+    transform 0.08s ease;
 }
 
 .riwayat a.btn-view:hover,
@@ -915,31 +927,33 @@ body.has-sidebar {
 
 /* ========== ADMIN DASHBOARD ========== */
 .admin-container {
-  padding: 30px;
+  padding: 20px;
 }
 
 /* ========== ADMIN DASHBOARD========== */
 
 body.has-sidebar .admin-container {
-  margin-left: 20px; 
-  max-width: calc(100% - 280px); 
+  margin-left: 20px;
+  max-width: calc(100% - 280px);
   box-sizing: border-box;
 }
 
 /* pastikan tabel admin tidak memotong aksi tombol */
 .admin-table {
-  overflow: visible; 
+  overflow: visible;
   background: #fff;
   border-collapse: collapse;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
   border-radius: 10px;
+  width: 100%;
+  font-size: 0.85rem;
 }
 
 /* sel tabel: jangan pake nowrap sehingga tombol bisa wrap bila perlu */
 .admin-table td,
 .admin-table th {
   white-space: normal;
-  padding: 14px 16px;
+  padding: 8px 10px;
   vertical-align: middle;
   border-bottom: 1px solid #e6e6e6;
 }
@@ -952,74 +966,91 @@ body.has-sidebar .admin-container {
   align-items: center;
 }
 
-  .harga-badge {
+.harga-badge {
   display: inline-block;
   background: #f4b400;
   color: #fff;
   font-weight: 700;
-  padding: 6px 14px;
+  padding: 4px 10px;
   border-radius: 999px;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   white-space: nowrap;
 }
-
-
 
 .admin-table .btn-approve,
 .admin-table .btn-reject {
   display: inline-block;
-  margin: 6px 6px 4px 0;
+  margin: 3px 3px 2px 0;
   text-align: center;
   text-decoration: none;
-  padding: 6px 10px;
-  border-radius: 6px;
+  padding: 4px 8px;
+  border-radius: 4px;
   color: #fff;
   font-weight: 600;
-  transition: background .15s ease, transform .08s ease;
+  font-size: 0.8rem;
+  transition:
+    background 0.15s ease,
+    transform 0.08s ease;
 }
 
-
-.btn-approve { background: #2ecc71; }
-.btn-reject  { background: #e74c3c; }
-
+.btn-approve {
+  background: #2ecc71;
+}
+.btn-reject {
+  background: #e74c3c;
+}
 
 .admin-table td:nth-last-child(1) {
   min-width: 160px;
 }
 
-
 @media (max-width: 900px) {
-  .admin-table td:nth-last-child(1) { min-width: 0; }
+  .admin-table td:nth-last-child(1) {
+    min-width: 0;
+  }
 }
-
 
 .admin-table .badge {
   display: inline-block;
-  padding: 6px 12px;
-  border-radius: 6px;
+  padding: 4px 8px;
+  border-radius: 4px;
   color: #fff;
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   text-align: center;
 }
 
-.admin-table .badge.pending { background: #ff9800; }
-.admin-table .badge.confirmed { background: #4caf50; }
-.admin-table .badge.rejected { background: #f44336; }
-.admin-table .badge.waiting { background: #ff9800; }
-.admin-table .badge.request_cancel { background: #ff9800; }
-.admin-table .badge.refunded { background: #e74c3c; }
-
+.admin-table .badge.pending {
+  background: #ff9800;
+}
+.admin-table .badge.confirmed {
+  background: #4caf50;
+}
+.admin-table .badge.rejected {
+  background: #f44336;
+}
+.admin-table .badge.waiting {
+  background: #ff9800;
+}
+.admin-table .badge.request_cancel {
+  background: #ff9800;
+}
+.admin-table .badge.refunded {
+  background: #e74c3c;
+}
 
 .admin-table a.btn-view {
   display: inline-block;
   background: #3a2e2e;
   color: #fff;
-  padding: 6px 10px;
-  border-radius: 6px;
+  padding: 4px 8px;
+  border-radius: 4px;
   text-decoration: none;
   font-weight: 600;
-  transition: background .15s ease, transform .08s ease;
+  font-size: 0.8rem;
+  transition:
+    background 0.15s ease,
+    transform 0.08s ease;
 }
 .admin-table a.btn-view:hover,
 .admin-table a.btn-view:focus {
@@ -1027,68 +1058,68 @@ body.has-sidebar .admin-container {
   transform: translateY(-1px);
 }
 
-
-.admin-table td:last-child { white-space: normal; }
+.admin-table td:last-child {
+  white-space: normal;
+}
 
 /* ========== FOOTER ========== */
 .footer {
-    background-color: #f4f4f4;
-    padding: 20px 20px;
-    margin-top: 60px;
-    color: #333;
-    font-family: 'Poppins', sans-serif;
+  background-color: #f4f4f4;
+  padding: 20px 20px;
+  margin-top: 60px;
+  color: #333;
+  font-family: "Poppins", sans-serif;
 }
 
 .footer-container {
-    max-width: 1200px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 40px;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
 }
 
 .footer-section {
-    min-width: 250px;;
+  min-width: 250px;
 }
 
 .footer h3 {
-    margin-bottom: 15px;
-    font-size: 20px;
-    font-weight: 600;
+  margin-bottom: 15px;
+  font-size: 20px;
+  font-weight: 600;
 }
 
-.footer p, 
-.footer a, 
+.footer p,
+.footer a,
 .footer li {
-    font-size: 15px;
-    color: #444;
-    text-decoration: none;
+  font-size: 15px;
+  color: #444;
+  text-decoration: none;
 }
 
 .footer a:hover {
-    color: #ff6b00;
+  color: #ff6b00;
 }
 
 .footer-social a {
-    display: inline-block;
-    margin-right: 12px;
+  display: inline-block;
+  margin-right: 12px;
 }
 
 .footer-section ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 .footer-bottom {
-    text-align: center;
-    margin-top: 30px;
-    border-top: 1px solid #cccccc;
-    padding-top: 15px;
-    font-size: 14px;
-    color: #666;
+  text-align: center;
+  margin-top: 30px;
+  border-top: 1px solid #cccccc;
+  padding-top: 15px;
+  font-size: 14px;
+  color: #666;
 }
-
 
 /* ====== Menu Andalan (admin) ====== */
 .menuandalan-form {
@@ -1096,7 +1127,7 @@ body.has-sidebar .admin-container {
   background: #fff;
   padding: 16px;
   border-radius: 8px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
   margin-bottom: 16px;
 }
 .menuandalan-form input[type="text"],
@@ -1131,7 +1162,7 @@ body.has-sidebar .admin-container {
   background: #fff;
   padding: 12px;
   border-radius: 10px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
   align-items: flex-start;
 }
 .menuandalan-list .card .thumb {
@@ -1141,18 +1172,18 @@ body.has-sidebar .admin-container {
   overflow: hidden;
   border-radius: 8px;
   background: #f5f5f5;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .menuandalan-list .card .thumb img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display:block;
+  display: block;
 }
 .menuandalan-list .card .no-thumb {
-  color:#777;
+  color: #777;
   font-size: 0.9rem;
 }
 
@@ -1162,15 +1193,15 @@ body.has-sidebar .admin-container {
 }
 .menuandalan-list .card .info p {
   margin: 0 0 10px;
-  color:#444;
+  color: #444;
   font-size: 0.95rem;
   max-height: 6.2rem;
   overflow: hidden;
 }
 
 .menuandalan-list .card .actions {
-  display:flex;
-  gap:8px;
+  display: flex;
+  gap: 8px;
 }
 .menuandalan-list .btn-edit,
 .menuandalan-list .btn-delete {
@@ -1188,8 +1219,6 @@ body.has-sidebar .admin-container {
   background: #e74c3c;
   color: #fff;
 }
-
-
 
 /* ========== RATING SECTION ========== */
 .rating-section {
@@ -1250,7 +1279,7 @@ body.has-sidebar .admin-container {
   background: #ffffff;
   padding: 25px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
   flex-shrink: 0;
 }
@@ -1341,7 +1370,7 @@ body.has-sidebar .admin-container {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
   z-index: 1000;
   justify-content: center;
   align-items: center;
@@ -1377,7 +1406,6 @@ body.has-sidebar .admin-container {
   margin-bottom: 15px;
 }
 
-
 .rating-input {
   display: flex;
   gap: 5px;
@@ -1388,19 +1416,16 @@ body.has-sidebar .admin-container {
   cursor: pointer;
   font-size: 2rem;
   transition: color 0.2s ease;
-  color: #ddd; 
+  color: #ddd;
 }
 
 .rating-input .star.hover {
-  color: #ffdb70; 
+  color: #ffdb70;
 }
 
 .rating-input .star.filled {
-  color: #ffc107; 
+  color: #ffc107;
 }
-
-
-
 
 .rating-form label {
   display: block;
@@ -1408,7 +1433,6 @@ body.has-sidebar .admin-container {
   font-weight: 600;
   color: #333;
 }
-
 
 .rating-selected {
   font-size: 0.9rem;
@@ -1450,12 +1474,12 @@ body.has-sidebar .admin-container {
     min-width: 280px;
     padding: 20px;
   }
-  
+
   .rating-carousel {
     gap: 20px;
     padding: 15px 10px;
   }
-  
+
   .rating-header {
     flex-direction: column;
     gap: 20px;
@@ -1467,17 +1491,17 @@ body.has-sidebar .admin-container {
   .rating-card {
     min-width: 260px;
   }
-  
+
   .user-info {
     flex-direction: column;
     text-align: center;
     gap: 8px;
   }
-  
+
   .user-details h4 {
     font-size: 1rem;
   }
-  
+
   .rating-modal-content {
     padding: 20px;
     margin: 20px;
@@ -1527,7 +1551,7 @@ body.has-sidebar .admin-container {
   background: #ffffff;
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   margin-bottom: 40px;
 }
 
@@ -1633,29 +1657,28 @@ body.has-sidebar .admin-container {
     flex-direction: column;
     gap: 20px;
   }
-  
+
   .overall-stats {
     flex-direction: column;
     gap: 20px;
     width: 100%;
   }
-  
+
   .overall-score {
     width: 100%;
   }
-  
+
   .detail-item {
     flex-direction: column;
     align-items: flex-start;
     gap: 5px;
   }
-  
+
   .detail-stars {
     width: 100%;
     justify-content: space-between;
   }
 }
-
 
 /* ========== GLOBAL BUTTON HOVER SCALE EFFECT ========== */
 button,
@@ -1671,7 +1694,9 @@ a.btn,
 .btn-tulis-ulasan,
 .carousel-btn,
 a[class*="btn"] {
-  transition: transform 0.2s ease, background-color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
 }
 
 button:hover,
@@ -1698,42 +1723,36 @@ input[type="submit"]:disabled,
   cursor: not-allowed;
 }
 
-
-
-
-
 .btn-konfirmasi:hover {
-    transform: scale(1.15) !important;
+  transform: scale(1.15) !important;
 }
 
-
-
 .laporan-keuangan-header {
-    background: #fff;
-    text-align: center;
-    vertical-align: top;
+  background: #fff;
+  text-align: center;
+  vertical-align: top;
 }
 
 .laporan-keuangan {
-     width: 260px;
-    margin-right: 30%;
-    border: 1px solid #eee;
-    border-radius: 8px;
-    padding: 10px;
+  width: 260px;
+  margin-right: 30%;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 10px;
 }
 
 .laporan-keuangan h4 {
-    margin: 0 0 6px;
-    font-size: 15px;
-    font-weight: 600;
+  margin: 0 0 6px;
+  font-size: 15px;
+  font-weight: 600;
 }
 
 .laporan-keuangan a {
-    font-size: 13px;
-    text-decoration: none;
-    color: #007bff;
+  font-size: 13px;
+  text-decoration: none;
+  color: #007bff;
 }
 
 .laporan-keuangan a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }

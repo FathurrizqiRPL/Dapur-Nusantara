@@ -28,6 +28,32 @@ ORDER BY r.tanggal DESC, r.jam_mulai DESC
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Dashboard - Dapur Nusantara</title>
   <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .admin-table th {
+      white-space: nowrap;
+      background: #f8f8f8;
+      font-weight: 700;
+      position: sticky;
+      top: 0;
+    }
+
+    .admin-table h4 {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    .admin-table .laporan-keuangan {
+      font-size: 0.8rem;
+    }
+
+    .admin-table .laporan-keuangan a {
+      display: inline;
+    }
+
+    .meja-info span {
+      font-size: 0.85rem;
+    }
+  </style>
 </head>
 
 <body class="has-sidebar">
