@@ -1,20 +1,15 @@
 <?php
-/*************************************************
- * POINT 1️⃣ - DEFINE FONT PATH
- *************************************************/
 define('FPDF_FONTPATH', __DIR__ . '/../fpdf/font/');
-
-
-/*************************************************
- * POINT 2️⃣ - REQUIRE LIBRARY & DATABASE
- *************************************************/
-require __DIR__ . '/../fpdf/fpdf.php';
+require_once __DIR__ . '/../fpdf/fpdf.php';
 require __DIR__ . '/../../config.php';
 
+if (!class_exists('FPDF')) {
+    die('FPDF class tidak ditemukan.');
+}
 
-/*************************************************
- * POINT 3️⃣ - AMBIL MODE LAPORAN (all / 30 hari)
- *************************************************/
+/* ===============================
+   MODE LAPORAN
+=================================*/
 $mode = $_GET['mode'] ?? 'all';
 $whereTanggal = '';
 $tanggalInfo = '';
@@ -23,28 +18,22 @@ if ($mode === '30') {
     $tanggalAkhir = date('Y-m-d');
     $tanggalAwal = date('Y-m-d', strtotime('-30 days'));
     $whereTanggal = "AND r.tanggal >= '$tanggalAwal'";
-    $tanggalInfo = "Dari $tanggalAwal sampai $tanggalAkhir";
+    $tanggalInfo = "Periode $tanggalAwal s/d $tanggalAkhir";
 } else {
-    $tanggalInfo = "Laporan Keseluruhan (Semua Periode)";
+    $tanggalInfo = "Semua Periode";
 }
 
-
-/*************************************************
- * POINT 4️⃣ - QUERY DATABASE
- *************************************************/
-
-// Penghasilan (Confirmed)
+/* ===============================
+   QUERY DATA
+=================================*/
 $qIncome = mysqli_query($conn, "
     SELECT SUM(r.harga_total) AS total
     FROM reservations r
-    WHERE (
-        r.status = 'confirmed'
-        OR r.status = 'refunded'
-      ) $whereTanggal
+    WHERE r.status IN ('confirmed','refunded')
+    $whereTanggal
 ");
 $income = mysqli_fetch_assoc($qIncome)['total'] ?? 0;
 
-// Refund (Cancelled + ada rekening)
 $qRefund = mysqli_query($conn, "
     SELECT SUM(r.harga_total) AS total
     FROM reservations r
@@ -53,92 +42,153 @@ $qRefund = mysqli_query($conn, "
 ");
 $refund = mysqli_fetch_assoc($qRefund)['total'] ?? 0;
 
-// Bersih
 $bersih = $income - $refund;
 
-// Untuk laporan keseluruhan, ambil data per bulan (income, refund, netto)
-$dataPerBulan = [];
-if ($mode === 'all') {
-    $qBulan = mysqli_query($conn, "
-        SELECT DATE_FORMAT(r.tanggal, '%Y-%m') AS bulan,
-               SUM(CASE WHEN r.status IN ('confirmed','refunded') THEN r.harga_total ELSE 0 END) AS gross_income,
-               SUM(CASE WHEN r.status = 'refunded' THEN r.harga_total ELSE 0 END) AS refund,
-               (SUM(CASE WHEN r.status IN ('confirmed','refunded') THEN r.harga_total ELSE 0 END) - SUM(CASE WHEN r.status = 'refunded' THEN r.harga_total ELSE 0 END)) AS net
-        FROM reservations r
-        WHERE r.status IN ('confirmed', 'refunded')
-        GROUP BY DATE_FORMAT(r.tanggal, '%Y-%m')
-        ORDER BY DATE_FORMAT(r.tanggal, '%Y-%m') DESC
-    ");
-    while ($row = mysqli_fetch_assoc($qBulan)) {
-        $bulanTahun = date('F Y', strtotime($row['bulan'] . '-01'));
-        $dataPerBulan[] = [
-            'bulan'   => $bulanTahun,
-            'income'  => (float)$row['gross_income'],
-            'refund'  => (float)$row['refund'],
-            'total'   => (float)$row['net']
-        ];
+/* ===============================
+   PDF CLASS CUSTOM
+=================================*/
+class PDF extends FPDF {
+
+    function Header() {
+
+    // Logo
+    $this->Image(__DIR__ . '/../../assets/img/logo2hitam.png',10,12,22);
+
+    
+    $this->SetFont('Arial','B',16);
+    $this->Cell(0,8,'PT DAPUR NUSANTARA INDONESIA',0,1,'C');
+
+    
+    $this->SetFont('Arial','',11);
+    $this->Cell(0,6,'Sistem Reservasi & Manajemen Restoran',0,1,'C');
+
+
+    $this->SetFont('Arial','',10);
+    $this->MultiCell(0,5,
+        "Jl. Anggrek Raya No. 18, Kompleks Kuliner Surya Mandala,\n".
+        "Jakarta Timur, DKI Jakarta 13450\n".
+        "Telp: (021) 1234-5678 | Email: info@dapurnusantara.co.id",
+        0,
+        'C'
+    );
+
+    $this->Ln(3);
+    $this->SetLineWidth(1);
+    $this->Line(10,$this->GetY(),200,$this->GetY());
+    $this->Ln(6);
+}
+
+    function Footer() {
+        $this->SetY(-15);
+        $this->SetFont('Arial','I',8);
+        $this->Cell(0,10,'Generated on '.date('d M Y H:i').' | Page '.$this->PageNo().'/{nb}',0,0,'C');
     }
 }
 
-
-/*************************************************
- * POINT 5️⃣ - GENERATE PDF
- *************************************************/
-$pdf = new FPDF();
+/* ===============================
+   GENERATE PDF
+=================================*/
+$pdf = new PDF();
+$pdf->AliasNbPages();
 $pdf->AddPage();
 
-// Judul
-$pdf->SetFont('Arial','B',16);
-$pdf->Cell(0,10,'LAPORAN KEUANGAN DAPUR NUSANTARA',0,1,'C');
-
-// Periode
+/* ===============================
+   INFO LAPORAN
+=================================*/
 $pdf->SetFont('Arial','',11);
-$pdf->Cell(0,8,$tanggalInfo,0,1,'C');
+$pdf->Cell(40,8,'Periode',0);
+$pdf->Cell(0,8,': '.$tanggalInfo,0,1);
+
+$pdf->Cell(40,8,'Dicetak Oleh',0);
+$pdf->Cell(0,8,': Admin System',0,1);
 
 $pdf->Ln(5);
 
-// Untuk 30 hari
-if ($mode === '30') {
-    $pdf->SetFont('Arial','B',12);
-    $pdf->Cell(100,10,'Total Penghasilan',1);
-    $pdf->Cell(0,10,'Rp '.number_format($income),1,1);
+/* ===============================
+   SUMMARY BOX
+=================================*/
+$pdf->SetFont('Arial','B',11);
+$pdf->SetFillColor(240,240,240);
 
-    $pdf->Cell(100,10,'Total Refund',1);
-    $pdf->Cell(0,10,'Rp '.number_format($refund),1,1);
+$pdf->Cell(63,10,'Total Income',1,0,'C',true);
+$pdf->Cell(63,10,'Total Refund',1,0,'C',true);
+$pdf->Cell(63,10,'Net Income',1,1,'C',true);
 
-    $pdf->SetFont('Arial','B',12);
-    $pdf->Cell(100,10,'Total Bersih',1);
-    $pdf->Cell(0,10,'Rp '.number_format($bersih),1,1);
-}
+$pdf->SetFont('Arial','',11);
+$pdf->Cell(63,10,'Rp '.number_format($income),1,0,'C');
+$pdf->Cell(63,10,'Rp '.number_format($refund),1,0,'C');
+$pdf->Cell(63,10,'Rp '.number_format($bersih),1,1,'C');
 
-// Untuk keseluruhan, tampilkan per bulan
-if ($mode === 'all' && count($dataPerBulan) > 0) {
+$pdf->Ln(8);
+
+/* ===============================
+   DETAIL PER BULAN (ALL MODE)
+=================================*/
+if ($mode === 'all') {
+
+    $qBulan = mysqli_query($conn, "
+        SELECT DATE_FORMAT(r.tanggal, '%Y-%m') AS bulan,
+               SUM(CASE WHEN r.status IN ('confirmed','refunded') THEN r.harga_total ELSE 0 END) AS income,
+               SUM(CASE WHEN r.status = 'refunded' THEN r.harga_total ELSE 0 END) AS refund
+        FROM reservations r
+        WHERE r.status IN ('confirmed','refunded')
+        GROUP BY DATE_FORMAT(r.tanggal, '%Y-%m')
+        ORDER BY DATE_FORMAT(r.tanggal, '%Y-%m') DESC
+    ");
+
     $pdf->SetFont('Arial','B',11);
-    $pdf->Cell(60,10,'Bulan',1);
-    $pdf->Cell(45,10,'Penghasilan',1);
-    $pdf->Cell(45,10,'Refund',1);
-    $pdf->Cell(0,10,'Bersih',1,1);
+    $pdf->SetFillColor(220,220,220);
+    $pdf->Cell(60,8,'Bulan',1,0,'C',true);
+    $pdf->Cell(45,8,'Income',1,0,'C',true);
+    $pdf->Cell(45,8,'Refund',1,0,'C',true);
+    $pdf->Cell(40,8,'Net',1,1,'C',true);
 
     $pdf->SetFont('Arial','',10);
-    $totalIncomeAll = 0;
-    $totalRefundAll = 0;
-    $totalNetAll = 0;
-    foreach ($dataPerBulan as $data) {
-        $pdf->Cell(60,8,$data['bulan'],1);
-        $pdf->Cell(45,8,'Rp '.number_format($data['income']),1);
-        $pdf->Cell(45,8,'Rp '.number_format($data['refund']),1);
-        $pdf->Cell(0,8,'Rp '.number_format($data['total']),1,1);
 
-        $totalIncomeAll += $data['income'];
-        $totalRefundAll += $data['refund'];
-        $totalNetAll += $data['total'];
+    while ($row = mysqli_fetch_assoc($qBulan)) {
+
+        $bulan = date('F Y', strtotime($row['bulan'].'-01'));
+        $incomeBulan = $row['income'];
+        $refundBulan = $row['refund'];
+        $netBulan = $incomeBulan - $refundBulan;
+
+        $pdf->Cell(60,8,$bulan,1);
+        $pdf->Cell(45,8,'Rp '.number_format($incomeBulan),1);
+        $pdf->Cell(45,8,'Rp '.number_format($refundBulan),1);
+        $pdf->Cell(40,8,'Rp '.number_format($netBulan),1,1);
     }
-
-    $pdf->SetFont('Arial','B',11);
-    $pdf->Cell(60,10,'TOTAL',1);
-    $pdf->Cell(45,10,'Rp '.number_format($totalIncomeAll),1);
-    $pdf->Cell(45,10,'Rp '.number_format($totalRefundAll),1);
-    $pdf->Cell(0,10,'Rp '.number_format($totalNetAll),1,1);
 }
+/* ===============================
+   PENJELASAN SUMBER KEUANGAN
+=================================*/
+$pdf->Ln(10);
+$pdf->SetFont('Arial','B',12);
+$pdf->Cell(0,8,'Keterangan Laporan Keuangan',0,1);
+
+$pdf->SetFont('Arial','',10);
+$pdf->MultiCell(0,6,
+"1. Sumber Income berasal dari total reservasi yang telah dikonfirmasi (status confirmed) serta reservasi yang telah diproses refund.
+2. Pengurangan dana berasal dari transaksi refund akibat pembatalan reservasi oleh pelanggan maupun persetujuan pembatalan oleh admin.
+3. Net Income merupakan selisih antara Total Income dan Total Refund pada periode yang dipilih."
+);
+
+$pdf->Ln(10);
+
+/* ===============================
+   TANDA TANGAN RESMI
+=================================*/
+$pdf->SetFont('Arial','',11);
+
+$pdf->Cell(0,6,'Jakarta, '.date('d F Y'),0,1,'R');
+$pdf->Ln(15);
+
+$pdf->Cell(0,6,'Mengetahui,',0,1,'R');
+$pdf->Cell(0,6,'Kepala PT Dapur Nusantara Indonesia',0,1,'R');
+
+$pdf->Ln(25);
+
+$pdf->Cell(0,6,'(______________________________)',0,1,'R');
+$pdf->Cell(0,6,'Budi Santoso, S.E., M.M.',0,1,'R');
+
 
 $pdf->Output();

@@ -29,6 +29,38 @@ ORDER BY r.tanggal DESC, r.jam_mulai DESC
   <title>Admin Dashboard - Dapur Nusantara</title>
   <link rel="stylesheet" href="../assets/css/style.css">
   <style>
+    .report-actions {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.btn-report {
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.btn-report.primary {
+  background: #111;
+  color: #fff;
+}
+
+.btn-report.primary:hover {
+  background: #333;
+}
+
+.btn-report.secondary {
+  background: #e5e5e5;
+  color: #111;
+}
+
+.btn-report.secondary:hover {
+  background: #d5d5d5;
+}
     .admin-table th {
       white-space: nowrap;
       background: #f8f8f8;
@@ -42,14 +74,6 @@ ORDER BY r.tanggal DESC, r.jam_mulai DESC
       font-size: 0.9rem;
     }
 
-    .admin-table .laporan-keuangan {
-      font-size: 0.8rem;
-    }
-
-    .admin-table .laporan-keuangan a {
-      display: inline;
-    }
-
     .meja-info span {
       font-size: 0.85rem;
     }
@@ -61,30 +85,26 @@ ORDER BY r.tanggal DESC, r.jam_mulai DESC
   <div class="admin-container">
     <h2>Dashboard Admin</h2>
     <p>Selamat datang, <?= $_SESSION['nama'] ?>!</p>
+    <h3 style="margin:20px 0;">Laporan Keuangan</h3>
+
+<div class="report-actions">
+  <a class="btn-report primary"
+     href="../admin/report/laporan_keuangan.php?mode=all"
+     target="_blank">
+     📄 Download Keseluruhan
+  </a>
+
+  <a class="btn-report secondary"
+     href="../admin/report/laporan_keuangan.php?mode=30"
+     target="_blank">
+     📅 Laporan 30 Hari
+  </a>
+</div>
 
     <h3 style="margin:20px 0;">Daftar Reservasi</h3>
-
-
     <table class="admin-table">
       <thead>
-        <tr>
-          <th colspan="5"></th>
-
-          <th colspan="2" class="laporan-keuangan-header">
-            <div class="laporan-keuangan">
-              <h4>Laporan Keuangan</h4>
-              <a href="../admin/report/laporan_keuangan.php?mode=all" target="_blank">
-                Download Keseluruhan
-              </a><br>
-              <a href="../admin/report/laporan_keuangan.php?mode=30" target="_blank">
-                Laporan 30 Hari
-              </a>
-            </div>
-          </th>
-
-          <th colspan="3"></th>
-        </tr>
-
+       
         <tr>
           <th>Nama Pemesan</th>
           <th>No. Telepon</th>

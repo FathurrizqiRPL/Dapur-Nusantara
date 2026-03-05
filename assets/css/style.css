@@ -1727,32 +1727,3 @@ input[type="submit"]:disabled,
   transform: scale(1.15) !important;
 }
 
-.laporan-keuangan-header {
-  background: #fff;
-  text-align: center;
-  vertical-align: top;
-}
-
-.laporan-keuangan {
-  width: 260px;
-  margin-right: 30%;
-  border: 1px solid #eee;
-  border-radius: 8px;
-  padding: 10px;
-}
-
-.laporan-keuangan h4 {
-  margin: 0 0 6px;
-  font-size: 15px;
-  font-weight: 600;
-}
-
-.laporan-keuangan a {
-  font-size: 13px;
-  text-decoration: none;
-  color: #007bff;
-}
-
-.laporan-keuangan a:hover {
-  text-decoration: underline;
-}
